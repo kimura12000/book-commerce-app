@@ -9,7 +9,11 @@ export const client = createClient({
 export const getAllBooks = async() => {
     const allBooks = await client.getList<BookType>({
         endpoint: 'bookcommerce',
-        queries: { limit: 100 }
+        queries: { limit: 100 },
+        // SSRのために必要 (microCMSより)　force-cacheにすることでSSGやISRとなる
+        customRequestInit: {
+          cache: "no-store",
+        }
         // contentId: '9sc6wwwss',
     })
     return allBooks;
@@ -18,7 +22,11 @@ export const getAllBooks = async() => {
 export const getDetailBook = async (contentId: string) => {
   const detailBook = await client.getListDetail<BookType>({
     endpoint: "bookcommerce",
-    contentId
+    contentId,
+    // SSRのために必要 (microCMSより)
+    customRequestInit: {
+      cache: "no-store",
+    }
   });
   return detailBook;
 }

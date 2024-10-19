@@ -82,8 +82,8 @@ export default async function Home() {
     <>
       <main className="flex flex-wrap justify-center items-center">
         <div className="relative h-auto w-full flex flex-wrap justify-center items-center md:pt-32 pt-20">
-        <h2 className="text-center w-full font-bold text-3xl mb-2">
-          Book Commerce
+        <h2 className="text-center w-full font-bold text-xl mb-2">
+          厳選 商品一覧
         </h2>
         {/* includesで購入履歴のbook.idの配列にincludesしている場合を判定してtrue/false */}
         {contents.map((book: BookType) => (

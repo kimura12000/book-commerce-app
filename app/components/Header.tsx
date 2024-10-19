@@ -19,7 +19,7 @@ const Header = async() => {
     <header className="bg-black text-gray-100 shadow-lg">
       <nav className="flex items-center justify-between p-4">
         <Link href={"/"} className="text-xl font-bold">
-          Book Commerce Online Shop
+          神田 下久呉服店 Online Shop
         </Link>
         <div className="flex items-center gap-1">
           <Link
