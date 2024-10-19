@@ -20,7 +20,6 @@ export default async function ProfilePage() {
       {cache: "no-store"} //SSR
     )
     const purchasesData = await response.json();
-    console.log("purchasesDetailBooks" ,purchasesData)
 
     // getDetailBookをPromise.allして購入履歴の全ての購入した本を取得する
     purchasesDetailBooks = await Promise.all(purchasesData.map(async (purchase: Purchase) => {

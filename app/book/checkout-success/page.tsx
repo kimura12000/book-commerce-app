@@ -25,7 +25,6 @@ const PurchaseSuccess = () => {
                     const data = await res.json();
                     // この時点でsetBookUrlされるのでセッションにこの値を保持して、ブラウザバックでページ遷移してもリンクが保持されるようにする。
                     setBookUrl(data.purchase?.bookId!);
-                    console.log("data, data.purchase?.bookId!::::::::::", data, data.purchase?.bookId!)
                 } catch(err) {
                     console.error(err)
                 }

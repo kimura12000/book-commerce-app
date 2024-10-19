@@ -76,7 +76,6 @@ export default async function Home() {
     purchaseBookIds = purchasesData.map((purchaseBook: Purchase) => (
       purchaseBook.bookId
     ))
-    console.log("purchasesData",purchasesData,purchaseBookIds);
   }
   return (
     <>
@@ -87,7 +86,12 @@ export default async function Home() {
         </h2>
         {/* includesで購入履歴のbook.idの配列にincludesしている場合を判定してtrue/false */}
         {contents.map((book: BookType) => (
-          <Book key={book.id} book={book} isPurchased={purchaseBookIds?.includes(book.id)}/>
+          // React.Memoを使用することでBookコンポーネントにpropsしているbookが更新・変更された時のみBookコンポーネントを再レンダリングするようにできる（ただし親コンポーネントからbookを変更しているわけでもないので、あまり意味がなく逆にMemo化することでオーバーヘッドが増えてしまう可能性もある）
+          <Book 
+          key={book.id} 
+          book={book} 
+          user={user}
+          isPurchased={purchaseBookIds?.includes(book.id)}/>
         ))}
         <div className="h-[30vh] w-full"></div>
         </div>

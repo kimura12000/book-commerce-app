@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { BookType } from "../types/types";
+import { BookType, User } from "../types/types";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -11,13 +11,15 @@ import { title } from "process";
 type BookProps = {
     book: BookType;
     isPurchased: boolean;
+    user: User;
 }
 
 // eslint-disable-next-line react/display-name
-const Book = ({ book, isPurchased }: BookProps) => {
+const Book = ({ book, isPurchased, user }: BookProps) => {
     const [showModal, setShowModal] = useState(false);
-    const {data: session} = useSession();
-    const user : any = session?.user;
+    // BookコンポーネントはMapされており5回呼び出されている。その度にuseSessionが呼び出されているのでパフォーマンス的に×
+    // const {data: session} = useSession();
+    // const user : any = session?.user;
     const router = useRouter();
 
     const startCheckout = async() => {
