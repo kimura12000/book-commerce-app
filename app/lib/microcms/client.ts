@@ -15,7 +15,10 @@ export const getAllBooks = async() => {
         queries: { limit: 100 },
         // SSRのために必要 (microCMSより)　force-cacheにすることでSSGやISRとなる
         customRequestInit: {
-          cache: "no-store",
+          next: {
+            // ISRに必要　秒数は3600秒（１時間ごとに再検証）
+            revalidate: 3600
+          }
         }
         // contentId: '9sc6wwwss',
     })
