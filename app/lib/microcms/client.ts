@@ -6,6 +6,9 @@ export const client = createClient({
   apiKey: process.env.NEXT_PUBLIC_API_KEY!,
 });
 
+
+// SSRかISRかの判断　購入履歴のように即座に反映されるべきものはSSRで実装し、購入対象の商品の全件取得や詳細ページのように更新が頻繁でない時はISRとする
+
 export const getAllBooks = async() => {
     const allBooks = await client.getList<BookType>({
         endpoint: 'bookcommerce',

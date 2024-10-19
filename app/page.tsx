@@ -89,9 +89,6 @@ export default async function Home() {
         {contents.map((book: BookType) => (
           <Book key={book.id} book={book} isPurchased={purchaseBookIds?.includes(book.id)}/>
         ))}
-        {contents.map((book: BookType) => (
-          <Book key={book.id} book={book} isPurchased={purchaseBookIds?.includes(book.id)}/>
-        ))}
         <div className="h-[30vh] w-full"></div>
         </div>
       </main>
